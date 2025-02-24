@@ -61,7 +61,6 @@ class _InputPageState extends State<InputPage> {
             height: bottomContainerHeight,
           ),
         ],
-
       )
     );
   }

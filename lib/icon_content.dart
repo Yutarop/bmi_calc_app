@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+const labelTextStyle = TextStyle(
+    fontSize: 15,
+    color: Color(0xFF8D8E98)
+);
+
 class IconContent extends StatelessWidget {
-  static const double ICON_SIZE = 80;
-  static const double TEXT_SIZE = 15;
 
   IconContent({required this.iconText, required this.iconShape, required this.shouldApplyPadding});
 
@@ -19,7 +22,7 @@ class IconContent extends StatelessWidget {
           padding: shouldApplyPadding ? EdgeInsets.only(left: 10) : null,
           child: Icon(
             iconShape,
-            size: ICON_SIZE,
+            size: 80,
           ),
         ),
         SizedBox(
@@ -27,10 +30,7 @@ class IconContent extends StatelessWidget {
         ),
         Text(
           iconText,
-          style: TextStyle(
-              fontSize: TEXT_SIZE,
-              color: Color(0xFF8D8E98)
-          ),
+          style: labelTextStyle,
         )
       ],
     );
