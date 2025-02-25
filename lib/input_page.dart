@@ -119,39 +119,42 @@ class _InputPageState extends State<InputPage> {
                             'WEIGHT',
                           style: kLabelTextStyle,
                         ),
-                        Text(
-                          weight.toString(),
-                          style: kLabelTextStyle,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              weight.toString(),
+                              style: kLabelTextStyleMiddle,
+                            ),
+                            Text(
+                              ' kg',
+                              style: kLabelTextStyle,
+                            )
+                          ],
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            FloatingActionButton(
-                              backgroundColor: Color(0xFF4C4F5E),
-                              onPressed: () {
-                                setState(() {
-                                  weight++;
-                                });
-                              },
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            FloatingActionButton(
-                              backgroundColor: Color(0xFF4C4F5E),
-                              onPressed: () {
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              pressedButton: () {
                                 setState(() {
                                   weight--;
                                 });
-                              },
-                              child: Icon(
-                                Icons.add,
-                                color: Colors.white,
+                              }
                               ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RoundIconButton(
+                              icon: FontAwesomeIcons.plus,
+                                pressedButton: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                }
                             ),
                           ],
                         )
@@ -180,10 +183,20 @@ class _InputPageState extends State<InputPage> {
 }
 
 class RoundIconButton extends StatelessWidget {
-  const RoundIconButton({super.key});
+  RoundIconButton({required this.icon, this.pressedButton});
+
+  final IconData icon;
+  final void Function()? pressedButton;
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return RawMaterialButton(
+      child: Icon(icon),
+      onPressed: pressedButton,
+      elevation: 10.0,
+      constraints: BoxConstraints(minWidth: 46.0, minHeight: 46.0),
+      shape: CircleBorder(),
+      fillColor: Colors.red,
+    );
   }
 }
