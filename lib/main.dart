@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'appColors.dart';
-import 'input_page.dart';
+import 'screens/input_page.dart';
 
 Appcolors appColors = Appcolors();
 
